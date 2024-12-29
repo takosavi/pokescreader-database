@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "pokescreader-database"
+version = "0.1.0"
+description = "Pokéscreader for SV で使用するポケモンデータベース"
+authors = ["もち (Mochi) <mochi.takosavi@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "pokescreader" },
+]
+
+[tool.poetry.scripts]
+create-db = "pokescreader.database:main"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+httpx = "^0.28.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+ruff = "^0.8.4"
+black = "^24.10.0"
+mypy = "^1.14.0"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--doctest-modules",
+    "--cov=pokescreader",
+    "--cov-report=term-missing",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
